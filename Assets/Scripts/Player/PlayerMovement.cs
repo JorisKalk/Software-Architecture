@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private LayerMask groundedGround;
+    [Header ("Layers")]
+    [SerializeField]
+    private LayerMask groundedGround;
 
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -13,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     private InputAction jumpInput;
 
     [Header("Movement Attributes")]
-    [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float jumpForce = 7f;
+    [SerializeField]
+    private float movementSpeed = 5f;
+    [SerializeField]
+    private float jumpForce = 7f;
 
     void Start()
     {

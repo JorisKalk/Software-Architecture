@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   maxHP: 10
   speed: 10
+  damageDealt: 3
   moneyMin: 8
   moneyMax: 12
   xp: 5
