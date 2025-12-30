@@ -16,7 +16,7 @@ public class EnemyDieController : EnemyObserver
             if (enemy.currentHP == 0)
             {
                 died = true;
-                //implement the giving xp and money to player here
+                //implement DieEvent scriptable object here
                 Destroy(enemyController.gameObject);
             }
         }

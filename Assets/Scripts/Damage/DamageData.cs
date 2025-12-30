@@ -1,8 +1,8 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "DamageData", menuName = "Scriptable Objects/DamageData")]
-public class DamageData : ScriptableObject
+[Serializable]
+public class DamageData
 {
     public int damage;
     public DamageType damageType;
