@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDieController
   enemyController: {fileID: 688986299834904162}
+  enemyDieEvent: {fileID: 11400000, guid: e8f8dc70d49b0254387ecfcd4e77944b, type: 2}
 --- !u!61 &440559124513203887
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,6 +4,9 @@ public class EnemyDieController : EnemyObserver
 {
     private bool died = false;
 
+    [SerializeField]
+    private GameEvent enemyDieEvent;
+
     protected override void OnEnemyCreated(Enemy enemy)
     {
         

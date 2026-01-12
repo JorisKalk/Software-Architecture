@@ -20,4 +20,6 @@ public class PlayerModel : MonoBehaviour
     private RangedWeaponData rangedWeapon;
     [SerializeField]
     private MeleeWeaponData meleeWeapon;
+
+
 }
