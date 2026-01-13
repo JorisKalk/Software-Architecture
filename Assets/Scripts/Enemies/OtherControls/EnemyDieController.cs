@@ -19,7 +19,7 @@ public class EnemyDieController : EnemyObserver
             if (enemy.currentHP == 0)
             {
                 died = true;
-                //implement DieEvent scriptable object here
+                enemyDieEvent.Publish(new EnemyDieEventData(enemy, enemyController.gameObject), enemyController.gameObject);
                 Destroy(enemyController.gameObject);
             }
         }

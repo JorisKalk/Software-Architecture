@@ -93517,6 +93517,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 688986299834904162, guid: 92c341b35dceb344d864bc7b97908027, type: 3}
+      propertyPath: tempDamageData.damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4791314241967503926, guid: 92c341b35dceb344d864bc7b97908027, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
@@ -93735,6 +93739,10 @@ PrefabInstance:
     - target: {fileID: 4545558066495495862, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681951219630504516, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
+      propertyPath: tempDamageData.damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8054736547163267262, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
       propertyPath: collector
