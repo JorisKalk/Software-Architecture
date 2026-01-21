@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    private SpriteRenderer sprite;
 
     private InputAction walkInput;
     private InputAction jumpInput;
@@ -24,9 +25,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
 
         walkInput = InputSystem.actions.FindAction("Move");
         jumpInput = InputSystem.actions.FindAction("Jump");
+    }
+
+    public void SetMovementValues(PlayerData playerStats)
+    {
+        movementSpeed = playerStats.moveSpeed;
+        jumpForce = playerStats.jumpForce;
     }
 
 
@@ -34,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //rb.linearVelocity = moveAction.ReadValue<Vector2>() * movementSpeed;
         rb.linearVelocityX = walkInput.ReadValue<float>() * movementSpeed;
+
+        if (rb.linearVelocityX > 0) sprite.flipX = false; else if (rb.linearVelocityX < 0) sprite.flipX = true;
     }
 
     public void Jump()

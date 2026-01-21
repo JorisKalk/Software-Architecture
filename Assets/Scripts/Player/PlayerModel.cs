@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.ComponentModel;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -18,8 +19,34 @@ public class PlayerModel : MonoBehaviour
     private ArmorData armor;
     [SerializeField]
     private RangedWeaponData rangedWeapon;
+    //[SerializeField]
+    //private MeleeWeaponData meleeWeapon;
+
+    [Header("Controllers")]
     [SerializeField]
-    private MeleeWeaponData meleeWeapon;
+    private PlayerMovement movementController;
+    [SerializeField]
+    private PlayerAttackController attackController;
+    
+
+    private float currentXP = 0;
+
+    private void OnEnable()
+    {
+        movementController.SetMovementValues(baseStats);
+        attackController.SetAttackData(rangedWeapon, rangedWeapon.projectileData);
+    }
 
 
+
+    public void OnEnemyDied(EventData eventData)
+    {
+        EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;
+        UpdateXP(enemyDieEvent.enemy.XP);
+    }
+
+    private void UpdateXP(int pValue)
+    {
+        currentXP += pValue;
+    }
 }

@@ -5,6 +5,6 @@ using System;
 public class PlayerData : ScriptableObject
 {
     public int maxHP;
-    public int moveSpeed;
-    public int jumpForce;
+    public float moveSpeed;
+    public float jumpForce;
 }

@@ -1,9 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHpBar : EnemyObserver
 {
+    [SerializeField]
+    private Image hpBar;
+
     protected override void OnEnemyCreated(Enemy enemy)
     {
+        hpBar.fillAmount = 1;
+
         Debug.Log("Created new enemy with stats:\n" +
             "HP: " + enemy.MaxHP + "\n" +
             "Speed: " + enemy.Speed + "\n" +
@@ -14,6 +20,8 @@ public class EnemyHpBar : EnemyObserver
 
     protected override void OnEnemyHit(Enemy enemy, DamageData damageData)
     {
-        
+        float maxHP = enemy.MaxHP;
+        float currentHP = enemy.currentHP;
+        hpBar.fillAmount = currentHP / maxHP;
     }
 }

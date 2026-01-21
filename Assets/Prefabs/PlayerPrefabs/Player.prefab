@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 473902070601725820}
   - component: {fileID: 8241072214180880706}
   - component: {fileID: 6394061610380975866}
+  - component: {fileID: 7123128521168541723}
+  - component: {fileID: 4662826240532553732}
   - component: {fileID: 8473365955702691761}
   - component: {fileID: 8835869159263840855}
   - component: {fileID: 6454464379183327291}
@@ -111,6 +113,11 @@ MonoBehaviour:
   baseDamage:
     damage: 0
     damageType: {fileID: 11400000, guid: d4727ba06efd04045be8aad70487cd71, type: 2}
+  xpNeededForLevelUp: 0
+  armor: {fileID: 0}
+  rangedWeapon: {fileID: 11400000, guid: 4e672c1410071554aa1391800425023a, type: 2}
+  movementController: {fileID: 6394061610380975866}
+  attackController: {fileID: 7123128521168541723}
 --- !u!114 &6394061610380975866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +135,46 @@ MonoBehaviour:
     m_Bits: 8
   movementSpeed: 10
   jumpForce: 7
+--- !u!114 &7123128521168541723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730625269143140586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17072bbcd02c6d046ad28e6885a63c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
+--- !u!114 &4662826240532553732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730625269143140586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17dc0804a9b6247860b78ce4b76a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEventSubscriber
+  gameEvent: {fileID: 11400000, guid: e8f8dc70d49b0254387ecfcd4e77944b, type: 2}
+  onEventPublished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8241072214180880706}
+        m_TargetAssemblyTypeName: PlayerModel, Assembly-CSharp
+        m_MethodName: OnEnemyDied
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &8473365955702691761
 BoxCollider2D:
   m_ObjectHideFlags: 0
