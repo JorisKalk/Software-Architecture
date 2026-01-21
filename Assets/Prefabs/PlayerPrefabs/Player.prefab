@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 8473365955702691761}
   - component: {fileID: 8835869159263840855}
   - component: {fileID: 6454464379183327291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17072bbcd02c6d046ad28e6885a63c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
+  projectileOriginOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &4662826240532553732
 MonoBehaviour:
   m_ObjectHideFlags: 0
