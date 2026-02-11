@@ -11,6 +11,12 @@ public abstract class EnemyObserver : MonoBehaviour
         enemyController.OnHit += OnEnemyHit;
     }
 
+    protected void OnDisable()
+    {
+        enemyController.onEnemyCreated -= OnEnemyCreated;
+        enemyController.OnHit -= OnEnemyHit;
+    }
+
     protected abstract void OnEnemyCreated(Enemy enemy);
 
     protected abstract void OnEnemyHit(Enemy enemy, DamageData damageData);
