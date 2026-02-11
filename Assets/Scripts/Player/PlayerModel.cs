@@ -9,6 +9,7 @@ public class PlayerModel : MonoBehaviour
     [Header("Player Attributes")]
     [SerializeField]
     private PlayerData baseStats;
+    private Player player;
     [SerializeField]
     private DamageData baseDamage;
     [SerializeField]
@@ -27,9 +28,19 @@ public class PlayerModel : MonoBehaviour
     private PlayerMovement movementController;
     [SerializeField]
     private PlayerAttackController attackController;
-    
+
+    public event Action<Player> PlayerCreated;
+    public event Action<Player, DamageData> OnHit;
+    //maybe use this one, but implement healing first.
+    //public event Action<HealingData> OnHeal;
 
     private float currentXP = 0;
+
+    private void Start()
+    {
+        player = baseStats.CreatePlayer();
+        PlayerCreated?.Invoke(player);
+    }
 
     private void OnEnable()
     {
