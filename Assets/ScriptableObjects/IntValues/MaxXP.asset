@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6feb3ade506277479872461a2900401, type: 3}
-  m_Name: RangedEnemy
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  maxHP: 50
-  speed: 2
-  damageDealt: 5
-  moneyMin: 10
-  moneyMax: 20
-  xp: 25
+  m_Script: {fileID: 11500000, guid: 7238c5cf9c2d9b04fa00c2de7b2011a8, type: 3}
+  m_Name: MaxXP
+  m_EditorClassIdentifier: Assembly-CSharp::IntValue
+  initialValue: 0

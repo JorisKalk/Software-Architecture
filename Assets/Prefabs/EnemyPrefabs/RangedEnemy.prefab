@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8054736547163267262}
   - component: {fileID: 3278486574656862106}
   - component: {fileID: 818212574352776574}
+  - component: {fileID: 2808732482121334739}
   m_Layer: 7
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -195,6 +196,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2808732482121334739
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121405994709598166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd98d3cef66c3804fb514ac85ccc582e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7800742070516201094
 GameObject:
   m_ObjectHideFlags: 0

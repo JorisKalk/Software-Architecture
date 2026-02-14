@@ -6,11 +6,13 @@ public class NumberPresenter : MonoBehaviour
     [SerializeField]
     private IntValue intValue;
     [SerializeField]
+    private string valueName;
+    [SerializeField]
     private TextMeshProUGUI numberText;
 
     private void UpdateNumberText()
     {
-        numberText.text = "Gold: " + intValue.value.ToString();
+        numberText.text = valueName + ": " + intValue.value.ToString();
     }
 
     private void Start()

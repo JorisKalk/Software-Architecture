@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8473365955702691761}
   - component: {fileID: 8835869159263840855}
   - component: {fileID: 6454464379183327291}
+  - component: {fileID: 2875978303130397064}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -38,6 +39,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8131917636494430381}
+  - {fileID: 2079283896386217885}
+  - {fileID: 4639274934070735590}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &473902070601725820
@@ -114,11 +117,17 @@ MonoBehaviour:
   baseDamage:
     damage: 0
     damageType: {fileID: 11400000, guid: d4727ba06efd04045be8aad70487cd71, type: 2}
-  xpNeededForLevelUp: 0
+  bonusMaxHP: 5
+  bonusDamage: 2
   armor: {fileID: 0}
   rangedWeapon: {fileID: 11400000, guid: 4e672c1410071554aa1391800425023a, type: 2}
   movementController: {fileID: 6394061610380975866}
   attackController: {fileID: 7123128521168541723}
+  level: {fileID: 11400000, guid: fc5ad8b926a6d5b44b68046fa6358e1f, type: 2}
+  currentHP: {fileID: 11400000, guid: 4e43fe2e357ae684b8241c69ab396746, type: 2}
+  maxHP: {fileID: 11400000, guid: 768705b9eb35eda4f80eee4b12af104c, type: 2}
+  currentXP: {fileID: 11400000, guid: 2fd404a4017fa5e41936d054d79d2654, type: 2}
+  maxXP: {fileID: 11400000, guid: 0d352f549db99b94ebafac986361ec33, type: 2}
 --- !u!114 &6394061610380975866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17072bbcd02c6d046ad28e6885a63c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
-  projectileOriginOffset: {x: 0, y: 0, z: 0}
+  muzzleFlashAnimation: {fileID: 1209767648058743417, guid: b1a14ecaefa50ec4faf75d52fc659495, type: 3}
+  projectileOriginOffsetReference: {fileID: 8765210510472464727}
+  flashOffsetReference: {fileID: 3779068297059792048}
 --- !u!114 &4662826240532553732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +379,28 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &2875978303130397064
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730625269143140586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f65211e89e233434ba0e167966e3f6aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3187791589966905799
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +519,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHpBar
   playerModel: {fileID: 8241072214180880706}
   hpBar: {fileID: 937526994164943225}
+--- !u!1 &3779068297059792048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4639274934070735590}
+  m_Layer: 6
+  m_Name: FlashOffsetReference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4639274934070735590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779068297059792048}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.713, y: 0.344, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5243211502931140485}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4788448794640182623
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,3 +700,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8765210510472464727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079283896386217885}
+  m_Layer: 6
+  m_Name: BulletOffsetReference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079283896386217885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765210510472464727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.564, y: 0.851, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5243211502931140485}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

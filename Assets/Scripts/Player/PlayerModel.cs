@@ -12,8 +12,12 @@ public class PlayerModel : MonoBehaviour
     private Player player;
     [SerializeField]
     private DamageData baseDamage;
+
+    [Header("Level Up")]
     [SerializeField]
-    private int xpNeededForLevelUp;
+    private int bonusMaxHP;
+    [SerializeField]
+    private int bonusDamage;
 
     [Header("Player Equipment")]
     [SerializeField]
@@ -29,17 +33,29 @@ public class PlayerModel : MonoBehaviour
     [SerializeField]
     private PlayerAttackController attackController;
 
+    [Header("GUI Int Values")]
+    [SerializeField]
+    private IntValue level;
+    [SerializeField]
+    private IntValue currentHP;
+    [SerializeField]
+    private IntValue maxHP;
+    [SerializeField]
+    private IntValue currentXP;
+    [SerializeField]
+    private IntValue maxXP;
+
     public event Action<Player> PlayerCreated;
     public event Action<Player, DamageData> OnHit;
-    //maybe use this one, but implement healing first.
-    //public event Action<HealingData> OnHeal;
-
-    private float currentXP = 0;
+    //TODO: make sure that you change int to healingdata everywhere if you ever implement healingdata
+    public event Action<Player, int> OnHeal;
+    public event Action<Player> OnMaxHpChanged;
 
     private void Start()
     {
         player = baseStats.CreatePlayer();
         PlayerCreated?.Invoke(player);
+        SetGuiValues();
     }
 
     private void OnEnable()
@@ -48,16 +64,47 @@ public class PlayerModel : MonoBehaviour
         attackController.SetAttackData(rangedWeapon, rangedWeapon.projectileData);
     }
 
+    public void GetHit(DamageData damageData)
+    {
+        player.currentHP -= damageData.damage;
+        if (player.currentHP < 0)
+        {
+            player.currentHP = 0;
+        }
 
+        currentHP.value = player.currentHP;
+
+        OnHit?.Invoke(player, damageData);
+    }
 
     public void OnEnemyDied(EventData eventData)
     {
         EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;
-        UpdateXP(enemyDieEvent.enemy.XP);
+
+        //LevelUp(player.UpdateLevel(enemyDieEvent.enemy.XP));
+        int newLevels = player.UpdateLevel(enemyDieEvent.enemy.XP);
+        if (newLevels > 0)
+        {
+            LevelUp(newLevels);
+        }
+        currentXP.value = (int)player.currentXP;
     }
 
-    private void UpdateXP(int pValue)
+    private void LevelUp(int amountOfLevels)
     {
-        currentXP += pValue;
+        attackController.DamageUp(bonusDamage * amountOfLevels);
+        player.MaxHpUp(bonusMaxHP * amountOfLevels);
+
+        OnMaxHpChanged?.Invoke(player);
+
+        SetGuiValues();
+        level.value += amountOfLevels;
+    }
+
+    private void SetGuiValues()
+    {
+        currentHP.value = player.currentHP;
+        maxHP.value = player.MaxHP;
+        maxXP.value = (int)player.XpToNextLevel;
     }
 }

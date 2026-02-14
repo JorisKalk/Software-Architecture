@@ -45,6 +45,9 @@ TagManager:
   - name: TerrainBackground
     uniqueID: 1254794819
     locked: 0
+  - name: TerrainBackgroundProps
+    uniqueID: 2638580887
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

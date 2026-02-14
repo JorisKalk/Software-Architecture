@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6feb3ade506277479872461a2900401, type: 3}
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  maxHP: 10
+  maxHP: 100
   speed: 10
   damageDealt: 3
   moneyMin: 8
   moneyMax: 12
-  xp: 5
+  xp: 20

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e253e128d492f245959a0683dd9b2cc, type: 3}
   m_Name: Bullet
   m_EditorClassIdentifier: Assembly-CSharp::RangedProjectileData
-  projectileSpeed: 15
+  projectileSpeed: 25
   projectile: {fileID: 6953983394367568774, guid: 1c20f09f725c056459aeb3172696ddeb, type: 3}
   damageData:
-    damage: 2
+    damage: 15
     damageType: {fileID: 11400000, guid: d4727ba06efd04045be8aad70487cd71, type: 2}

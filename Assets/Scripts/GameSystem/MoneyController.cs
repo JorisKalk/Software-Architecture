@@ -4,7 +4,7 @@ using System;
 public class MoneyController : MonoBehaviour
 {
     [SerializeField]
-    IntValue money;
+    private IntValue money;
 
     public void OnEnemyDied(EventData eventData)
     {

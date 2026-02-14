@@ -22,6 +22,7 @@ public class EnemyHpBar : EnemyObserver
     {
         float maxHP = enemy.MaxHP;
         float currentHP = enemy.currentHP;
+        if (currentHP == 0) Destroy(this.gameObject);
         hpBar.fillAmount = currentHP / maxHP;
     }
 }

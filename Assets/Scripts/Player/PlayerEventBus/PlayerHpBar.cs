@@ -13,6 +13,21 @@ public class PlayerHpBar : PlayerObserver
 
     protected override void OnPlayerHit(Player player, DamageData damageData)
     {
+        ChangeHpBar(player);
+    }
+
+    protected override void OnPlayerHealed(Player player, int healAmount)
+    {
+        ChangeHpBar(player);
+    }
+
+    protected override void OnPlayerMaxHpChanged(Player player)
+    {
+        ChangeHpBar(player);
+    }
+
+    protected void ChangeHpBar(Player player)
+    {
         float maxHP = player.MaxHP;
         float currentHP = player.currentHP;
         hpBar.fillAmount = currentHP / maxHP;

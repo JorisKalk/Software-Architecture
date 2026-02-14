@@ -10,11 +10,18 @@ public class PlayerAttackController : MonoBehaviour
 
     private float shotCooldown;
     private int damage;
+    private int playerDamageBonus;
     private float projectileSpeed;
     private GameObject attackProjectile;
 
     [SerializeField]
-    private Vector3 projectileOriginOffset = new Vector3(0f, 0f, 0f);
+    private GameObject muzzleFlashAnimation;
+    [SerializeField]
+    private GameObject projectileOriginOffsetReference;
+    [SerializeField]
+    private GameObject flashOffsetReference;
+    private Vector3 projectileOriginOffset;
+    private Vector3 muzzleFlashOffset;
 
     private float currentShotCooldown = 0f;
     private bool canShoot = true;
@@ -23,6 +30,10 @@ public class PlayerAttackController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         tf = GetComponent<Transform>();
+        projectileOriginOffset = projectileOriginOffsetReference.transform.localPosition;
+        Destroy(projectileOriginOffsetReference.gameObject);
+        muzzleFlashOffset = flashOffsetReference.transform.localPosition;
+        Destroy(flashOffsetReference.gameObject);
     }
 
     public void SetAttackData(RangedWeaponData pWeaponData, RangedProjectileData pProjectileData)
@@ -30,7 +41,7 @@ public class PlayerAttackController : MonoBehaviour
         weaponData = pWeaponData;
         projectileData = pProjectileData;
         shotCooldown = weaponData.shotCooldown;
-        damage = weaponData.damageBonus + projectileData.damageData.damage;
+        damage = weaponData.damageBonus + projectileData.damageData.damage + playerDamageBonus;
         projectileSpeed = projectileData.projectileSpeed;
         attackProjectile = projectileData.projectile;
     }
@@ -58,18 +69,31 @@ public class PlayerAttackController : MonoBehaviour
     private void FireProjectile()
     {
         GameObject firedProjectile = Instantiate(attackProjectile);
+        GameObject muzzleFlash = Instantiate(muzzleFlashAnimation);
 
         int lookDir = 0;
         if (sprite.flipX) 
         {
             lookDir = -1;
             firedProjectile.GetComponent<SpriteRenderer>().flipX = true;
+            muzzleFlash.GetComponent<SpriteRenderer>().flipX = true;
         }
         else lookDir = 1;
 
-        projectileOriginOffset = new Vector3(projectileOriginOffset.x * lookDir, projectileOriginOffset.y, projectileOriginOffset.z);
-        firedProjectile.GetComponent<Transform>().position = tf.position + projectileOriginOffset;
+        Vector3 offset = projectileOriginOffset;
+        offset.x *= lookDir;
+        firedProjectile.GetComponent<Transform>().position = tf.position + offset;
         firedProjectile.GetComponent<Rigidbody2D>().linearVelocityX = projectileSpeed * lookDir;
         firedProjectile.GetComponent<PlayerProjectile>().damageData = new DamageData(damage, projectileData.damageData.damageType);
+
+        Vector3 flashOffset = muzzleFlashOffset;
+        flashOffset.x *= lookDir;
+        muzzleFlash.GetComponent<Transform>().position = tf.position + flashOffset;
+    }
+
+    public void DamageUp(int extraDamage)
+    {
+        playerDamageBonus += extraDamage;
+        damage = weaponData.damageBonus + projectileData.damageData.damage + playerDamageBonus;
     }
 }
