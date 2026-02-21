@@ -6,6 +6,8 @@ public class EnemyData : ScriptableObject
 {
     public int maxHP;
     public float speed;
+    public float attackRange;
+    public float attackDelay;
     public int damageDealt;
     public int moneyMin;
     public int moneyMax;
@@ -13,7 +15,7 @@ public class EnemyData : ScriptableObject
 
     public Enemy CreateEnemy()
     {
-        return new Enemy(maxHP, speed, damageDealt, moneyMin, moneyMax, xp);
+        return new Enemy(maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax, xp);
     }
 }
 
@@ -25,6 +27,10 @@ public class Enemy
     public int currentHP;
     public float Speed => speed;
     private float speed;
+    public float AttackRange => attackRange;
+    private float attackRange;
+    public float AttackDelay => attackDelay;
+    private float attackDelay;
     public int DamageDealt => damageDealt;
     private int damageDealt;
     public int MoneyMin => moneyMin;
@@ -36,11 +42,13 @@ public class Enemy
     public int XP => xp;
     private int xp;
 
-    public Enemy(int pMaxHP, float pSpeed, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP)
+    public Enemy(int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP)
     {
         maxHP = pMaxHP;
         currentHP = pMaxHP;
         speed = pSpeed;
+        attackRange = pAttackRange;
+        attackDelay = pAttackDelay;
         damageDealt = pDamageDealt;
         moneyMin = pMoneyMin;
         moneyMax = pMoneyMax;

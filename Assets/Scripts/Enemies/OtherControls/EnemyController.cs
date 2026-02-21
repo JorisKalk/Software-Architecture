@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     private EnemyData enemyData;
     private Enemy enemy;
 
+    public DamageData dealtDamageData;
+
     public event Action<Enemy> onEnemyCreated;
     public event Action<Enemy, DamageData> OnHit;
 
@@ -30,6 +32,11 @@ public class EnemyController : MonoBehaviour
         }
 
         OnHit?.Invoke(enemy, damageData);
+    }
+
+    public Enemy GetEnemy()
+    {
+        return enemy;
     }
 
     public void DestroyThis()

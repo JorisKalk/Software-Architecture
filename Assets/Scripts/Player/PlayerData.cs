@@ -26,6 +26,8 @@ public class Player
     private float xpToNextLevel;
     public float currentXP;
     private float levelXpMultiplier;
+    public int Level => level;
+    private int level;
 
     public Player(int pMaxHP, float pXpToFirstLevel, float pLevelXpMultiplier)
     {
@@ -34,6 +36,7 @@ public class Player
         currentXP = 0;
         xpToNextLevel = pXpToFirstLevel;
         levelXpMultiplier = pLevelXpMultiplier;
+        level = 1;
     }
 
 
@@ -52,17 +55,10 @@ public class Player
         {
             currentXP -= xpToNextLevel;
             xpToNextLevel *= levelXpMultiplier;
+            level++;
             amountOfLevels++;
             Debug.Log("leveled up");
         }
-
-        //if (currentXP >= xpToNextLevel)
-        //{
-        //    currentXP -= xpToNextLevel;
-        //    xpToNextLevel *= levelXpMultiplier;
-        //    Debug.Log("leveled up");
-            
-        //}
         
         return amountOfLevels;
     }

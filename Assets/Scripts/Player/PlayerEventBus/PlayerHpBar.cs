@@ -26,7 +26,7 @@ public class PlayerHpBar : PlayerObserver
         ChangeHpBar(player);
     }
 
-    protected void ChangeHpBar(Player player)
+    private void ChangeHpBar(Player player)
     {
         float maxHP = player.MaxHP;
         float currentHP = player.currentHP;

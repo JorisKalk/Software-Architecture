@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: RangedEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   maxHP: 50
-  speed: 2
-  damageDealt: 5
+  speed: 0
+  attackRange: 20
+  attackDelay: 0.5
+  damageDealt: 20
   moneyMin: 10
   moneyMax: 20
   xp: 25

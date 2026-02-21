@@ -86952,7 +86952,7 @@ GameObject:
   - component: {fileID: 1674075855}
   - component: {fileID: 1674075854}
   - component: {fileID: 1674075853}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StageEndTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87004,7 +87004,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -87353,7 +87353,7 @@ GameObject:
   - component: {fileID: 1785145091}
   - component: {fileID: 1785145090}
   - component: {fileID: 1785145089}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainPropCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94312,6 +94312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2875978303130397064, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8eff5be853a9cd742b76b728cc0cf60e, type: 2}
     - target: {fileID: 5243211502931140485, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.43

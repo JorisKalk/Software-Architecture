@@ -9,7 +9,7 @@ public class EnemyDieController : EnemyObserver
     [SerializeField]
     private GameEvent enemyDieEvent;
 
-    protected void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
     }

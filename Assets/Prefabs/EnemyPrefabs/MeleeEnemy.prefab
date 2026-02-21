@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8007076042279913777}
   - component: {fileID: 484361352937290110}
   - component: {fileID: 688986299834904162}
+  - component: {fileID: 1646729584330610}
   - component: {fileID: 5926523739321463572}
   - component: {fileID: 440559124513203887}
   - component: {fileID: 237297280263913121}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4791314241967503926}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.93, y: -0.57, z: 0}
+  m_LocalPosition: {x: -1.06, y: -6.23, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -109,6 +110,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: 1447aa81a298a5f43bd4c8637c782573, type: 2}
+  dealtDamageData:
+    damage: 0
+    damageType: {fileID: 11400000, guid: d4727ba06efd04045be8aad70487cd71, type: 2}
+--- !u!114 &1646729584330610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791314241967503926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb1c0da3d9b88340a59281952c64b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyBehaviour
+  enemyController: {fileID: 688986299834904162}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveDirTime: 2
+  attackMoveSpeed: 20
 --- !u!114 &5926523739321463572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +216,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &6996171172377212516
 Animator:

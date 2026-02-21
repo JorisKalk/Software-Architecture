@@ -17,16 +17,13 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                collision.gameObject.GetComponent<EnemyController>().GetHit(damageData);
-            }
-            rb.linearVelocity = Vector3.zero;
-            col.enabled = false;
-            anim.SetTrigger("BulletExpired");
+            collision.gameObject.GetComponent<EnemyController>().GetHit(damageData);
         }
+        rb.linearVelocity = Vector3.zero;
+        col.enabled = false;
+        anim.SetTrigger("BulletExpired");
     }
 
     public void DestroyBullet()

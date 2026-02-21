@@ -6,6 +6,11 @@ public class MoneyController : MonoBehaviour
     [SerializeField]
     private IntValue money;
 
+    private void Start()
+    {
+        money.value = 0;
+    }
+
     public void OnEnemyDied(EventData eventData)
     {
         EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;

@@ -1,8 +1,10 @@
 using UnityEngine;
 using System;
+using UnityEditor.SceneManagement;
 using System.ComponentModel;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -81,7 +83,6 @@ public class PlayerModel : MonoBehaviour
     {
         EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;
 
-        //LevelUp(player.UpdateLevel(enemyDieEvent.enemy.XP));
         int newLevels = player.UpdateLevel(enemyDieEvent.enemy.XP);
         if (newLevels > 0)
         {
@@ -98,13 +99,19 @@ public class PlayerModel : MonoBehaviour
         OnMaxHpChanged?.Invoke(player);
 
         SetGuiValues();
-        level.value += amountOfLevels;
     }
 
     private void SetGuiValues()
     {
         currentHP.value = player.currentHP;
         maxHP.value = player.MaxHP;
+        currentXP.value = (int)player.currentXP;
         maxXP.value = (int)player.XpToNextLevel;
+        level.value = player.Level;
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
