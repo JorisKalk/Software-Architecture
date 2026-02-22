@@ -4,8 +4,6 @@ public class EnemyDieController : EnemyObserver
 {
     private Animator anim;
 
-    private bool died = false;
-
     [SerializeField]
     private GameEvent enemyDieEvent;
 
@@ -14,18 +12,15 @@ public class EnemyDieController : EnemyObserver
         anim = GetComponent<Animator>();
     }
 
-    protected override void OnEnemyCreated(Enemy enemy)
-    {
-        
-    }
+    protected override void OnEnemyCreated(Enemy enemy) { }
 
     protected override void OnEnemyHit(Enemy enemy, DamageData damageData)
     {
-        if (!died)
+        if (!enemyController.died)
         {
             if (enemy.currentHP == 0)
             {
-                died = true;
+                enemyController.died = true;
                 enemyDieEvent.Publish(new EnemyDieEventData(enemy, enemyController.gameObject), enemyController.gameObject);
                 GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 GetComponent<Collider2D>().enabled = false;

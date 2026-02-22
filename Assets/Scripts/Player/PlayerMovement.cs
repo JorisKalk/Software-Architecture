@@ -27,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
+        InitializeInputs();
+    }
+
+    private void InitializeInputs()
+    {
         walkInput = InputSystem.actions.FindAction("Move");
         jumpInput = InputSystem.actions.FindAction("Jump");
     }

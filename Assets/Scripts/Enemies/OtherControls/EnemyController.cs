@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     public event Action<Enemy> onEnemyCreated;
     public event Action<Enemy, DamageData> OnHit;
 
+    public bool died = false;
+
     void Start()
     {
         anim = GetComponent<Animator>();

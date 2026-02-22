@@ -30,6 +30,12 @@ public class PlayerAttackController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         tf = GetComponent<Transform>();
+
+        SetOffsets();
+    }
+
+    private void SetOffsets()
+    {
         projectileOriginOffset = projectileOriginOffsetReference.transform.localPosition;
         Destroy(projectileOriginOffsetReference.gameObject);
         muzzleFlashOffset = flashOffsetReference.transform.localPosition;

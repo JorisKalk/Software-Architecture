@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class PlayerProjectile : Projectile
+public class EnemyProjectile : Projectile
 {
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<EnemyController>().GetHit(damageData);
+            collision.gameObject.GetComponent<PlayerModel>().GetHit(damageData);
         }
         rb.linearVelocity = Vector3.zero;
         col.enabled = false;

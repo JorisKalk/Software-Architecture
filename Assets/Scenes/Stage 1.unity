@@ -94300,14 +94300,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2079283896386217885, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.171
-      objectReference: {fileID: 0}
-    - target: {fileID: 2079283896386217885, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2730625269143140586, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
       propertyPath: m_Name
       value: Player
@@ -94372,6 +94364,14 @@ PrefabInstance:
     - target: {fileID: 121405994709598166, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
       propertyPath: m_Name
       value: RangedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255414035479521863, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255414035479521863, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.060869217
       objectReference: {fileID: 0}
     - target: {fileID: 4545558066495495862, guid: 467a921714d12044ba061fd4f07ac1e0, type: 3}
       propertyPath: m_LocalPosition.x

@@ -15,6 +15,13 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected Enemy enemy;
     protected DamageData damageData;
 
+    [SerializeField]
+    protected float attackCooldown;
+    protected float cooldownTimer;
+    protected bool attackOnCooldown = false;
+
+    protected bool isAttacking = false;
+
     protected void OnEnable()
     {
         tf = transform;
@@ -24,17 +31,22 @@ public abstract class EnemyBehaviour : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
         enemyController.onEnemyCreated += OnEnemyCreated;
+        enemyController.onEnemyCreated += ExtraOnEnemyCreated;
     }
 
     protected void OnDisable()
     {
         enemyController.onEnemyCreated -= OnEnemyCreated;
+        enemyController.onEnemyCreated -= ExtraOnEnemyCreated;
     }
 
     protected void Update()
     {
-        MoveBehaviour();
-        AttackBehaviour();
+        if (!enemyController.died)
+        {
+            MoveBehaviour();
+            AttackBehaviour();
+        }
     }
 
     protected void OnEnemyCreated(Enemy enemy)
@@ -43,6 +55,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         damageData = enemyController.dealtDamageData;
         damageData.damage += enemy.DamageDealt;
     }
+
+    protected abstract void ExtraOnEnemyCreated(Enemy enemy);
 
     protected abstract void MoveBehaviour();
 

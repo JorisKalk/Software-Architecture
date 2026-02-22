@@ -13,13 +13,16 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
 
     [SerializeField]
     private float attackMoveSpeed;
-    private bool isAttacking = false;
     private float timeToAttack;
 
-    protected void Start()
+    private Vector2 lookDir;
+
+    private void Start()
     {
         moveTimeLeft = moveDirTime / 2f;
     }
+
+    protected override void ExtraOnEnemyCreated(Enemy enemy) { }
 
     protected override void MoveBehaviour()
     {
@@ -37,13 +40,16 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
                 ReverseMoveDir();
             }
         }
+
+        if (sprite.flipX) lookDir = Vector2.left;
+        else lookDir = Vector2.right;
     }
 
     protected override void AttackBehaviour()
     {
         if (!isAttacking)
         {
-            if ((sprite.flipX && AttackRayLeft()) || (!sprite.flipX && AttackRayRight()))
+            if (AttackRay())
             {
                 PrepareAttack();
             }
@@ -72,13 +78,13 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile")) return;
 
-        if (sprite.flipX && HitLeft())
+        if (sprite.flipX && HitObstacle())
         {
             sprite.flipX = false;
             ReverseMoveDir();
             CheckForAttackEnd(collision);
         }
-        else if (!sprite.flipX && HitRight())
+        else if (!sprite.flipX && HitObstacle())
         {
             sprite.flipX = true;
             ReverseMoveDir();
@@ -105,21 +111,13 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
         }
     }
 
-    private bool HitLeft()
+    private bool HitObstacle()
     {
-        return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, UnityEngine.Vector2.left, .1f);
-    }
-    private bool HitRight()
-    {
-        return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, UnityEngine.Vector2.right, .1f);
+        return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, lookDir, .1f);
     }
 
-    private bool AttackRayLeft()
+    private bool AttackRay()
     {
-        return Physics2D.Raycast(col.bounds.center, UnityEngine.Vector2.left, enemy.AttackRange, playerLayer);
-    }
-    private bool AttackRayRight()
-    {
-        return Physics2D.Raycast(col.bounds.center, UnityEngine.Vector2.right, enemy.AttackRange, playerLayer);
+        return Physics2D.Raycast(col.bounds.center, lookDir, enemy.AttackRange, playerLayer);
     }
 }

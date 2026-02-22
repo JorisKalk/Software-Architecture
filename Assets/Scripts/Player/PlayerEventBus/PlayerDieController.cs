@@ -13,10 +13,7 @@ public class PlayerDieController : PlayerObserver
         col = GetComponent<BoxCollider2D>();
     }
 
-    protected override void OnPlayerCreated(Player player)
-    {
-        
-    }
+    protected override void OnPlayerCreated(Player player) { }
 
     protected override void OnPlayerHit(Player player, DamageData damageData)
     {
@@ -28,13 +25,7 @@ public class PlayerDieController : PlayerObserver
         }
     }
 
-    protected override void OnPlayerHealed(Player player, int healAmount)
-    {
-        
-    }
+    protected override void OnPlayerHealed(Player player, int healAmount) { }
 
-    protected override void OnPlayerMaxHpChanged(Player player)
-    {
-        
-    }
+    protected override void OnPlayerMaxHpChanged(Player player) { }
 }
