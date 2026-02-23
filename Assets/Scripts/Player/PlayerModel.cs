@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerModel : MonoBehaviour
 {
+    private Animator anim;
+
     [Header("Player Attributes")]
     [SerializeField]
     private PlayerData baseStats;
@@ -55,6 +57,8 @@ public class PlayerModel : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
+
         player = baseStats.CreatePlayer();
         PlayerCreated?.Invoke(player);
         SetGuiValues();
@@ -72,6 +76,7 @@ public class PlayerModel : MonoBehaviour
         if (player.currentHP < 0)
         {
             player.currentHP = 0;
+            movementController.enabled = false;
         }
 
         currentHP.value = player.currentHP;
@@ -83,7 +88,19 @@ public class PlayerModel : MonoBehaviour
     {
         EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;
 
-        int newLevels = player.UpdateLevel(enemyDieEvent.enemy.XP);
+        GainXP(enemyDieEvent.enemy.XP);
+    }
+
+    public void OnQuestCompleted(EventData eventData)
+    {
+        QuestCompleteEventData questCompleteEvent = (QuestCompleteEventData)eventData;
+
+        GainXP(questCompleteEvent.quest.xp);
+    }
+
+    private void GainXP(int xpGained)
+    {
+        int newLevels = player.UpdateLevel(xpGained);
         if (newLevels > 0)
         {
             LevelUp(newLevels);
@@ -108,6 +125,11 @@ public class PlayerModel : MonoBehaviour
         currentXP.value = (int)player.currentXP;
         maxXP.value = (int)player.XpToNextLevel;
         level.value = player.Level;
+    }
+
+    public void EndAnimation()
+    {
+        anim.SetTrigger("End");
     }
 
     public void ResetScene()

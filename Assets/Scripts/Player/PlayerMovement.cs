@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
+    private Animator anim;
 
     private InputAction walkInput;
     private InputAction jumpInput;
@@ -21,11 +22,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float jumpForce = 7f;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
         InitializeInputs();
     }
@@ -43,12 +45,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        //rb.linearVelocity = moveAction.ReadValue<Vector2>() * movementSpeed;
         rb.linearVelocityX = walkInput.ReadValue<float>() * movementSpeed;
+        HorizontalAnimations();
 
         if (rb.linearVelocityX > 0) sprite.flipX = false; else if (rb.linearVelocityX < 0) sprite.flipX = true;
+    }
+
+    private void Update()
+    {
+        VerticalAnimations();
     }
 
     public void Jump()
@@ -62,5 +69,30 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, UnityEngine.Vector2.down, .1f, groundedGround);
+    }
+
+    private void HorizontalAnimations()
+    {
+        if (rb.linearVelocityX != 0f) anim.SetBool("Running", true);
+        else anim.SetBool("Running", false);
+    }
+
+    private void VerticalAnimations()
+    {
+        if (rb.linearVelocityY > 0.1f)
+        {
+            anim.SetBool("Falling", false);
+            anim.SetBool("Rising", true);
+        }
+        else if (rb.linearVelocityY < -0.1f)
+        {
+            anim.SetBool("Falling", true);
+            anim.SetBool("Rising", false);
+        }
+        else
+        {
+            anim.SetBool("Falling", false);
+            anim.SetBool("Rising", false);
+        }
     }
 }

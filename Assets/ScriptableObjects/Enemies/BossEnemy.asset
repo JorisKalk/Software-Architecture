@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6feb3ade506277479872461a2900401, type: 3}
   m_Name: BossEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyType: Boss
   maxHP: 0
   speed: 0
+  attackRange: 0
+  attackDelay: 0
+  damageDealt: 0
   moneyMin: 0
   moneyMax: 0
   xp: 0

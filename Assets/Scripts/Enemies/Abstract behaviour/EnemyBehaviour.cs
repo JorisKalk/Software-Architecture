@@ -8,6 +8,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected BoxCollider2D col;
     protected SpriteRenderer sprite;
 
+    [SerializeField]
+    protected LayerMask playerLayer;
     protected Transform playerTransform;
 
     [SerializeField]

@@ -4,6 +4,7 @@ using System;
 [CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects/EnemyData")]
 public class EnemyData : ScriptableObject
 {
+    public string enemyType;
     public int maxHP;
     public float speed;
     public float attackRange;
@@ -15,13 +16,15 @@ public class EnemyData : ScriptableObject
 
     public Enemy CreateEnemy()
     {
-        return new Enemy(maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax, xp);
+        return new Enemy(enemyType, maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax, xp);
     }
 }
 
 [Serializable]
 public class Enemy
 {
+    public string EnemyType => enemyType;
+    private string enemyType;
     public int MaxHP => maxHP;
     private int maxHP;
     public int currentHP;
@@ -42,8 +45,9 @@ public class Enemy
     public int XP => xp;
     private int xp;
 
-    public Enemy(int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP)
+    public Enemy(string pEnemyType, int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP)
     {
+        enemyType = pEnemyType;
         maxHP = pMaxHP;
         currentHP = pMaxHP;
         speed = pSpeed;

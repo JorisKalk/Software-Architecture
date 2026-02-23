@@ -4,6 +4,7 @@ public class PlayerAttackController : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private Transform tf;
+    private Animator anim;
 
     private RangedWeaponData weaponData;
     private RangedProjectileData projectileData;
@@ -30,6 +31,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         tf = GetComponent<Transform>();
+        anim = GetComponent<Animator>();
 
         SetOffsets();
     }
@@ -74,6 +76,8 @@ public class PlayerAttackController : MonoBehaviour
 
     private void FireProjectile()
     {
+        anim.SetTrigger("Fire");
+
         GameObject firedProjectile = Instantiate(attackProjectile);
         GameObject muzzleFlash = Instantiate(muzzleFlashAnimation);
 

@@ -17,6 +17,12 @@ public class MoneyController : MonoBehaviour
         UpdateMoney(enemyDieEvent.enemy.MoneyDropped);
     }
 
+    public void OnQuestCompleted(EventData eventData)
+    {
+        QuestCompleteEventData questCompleteEvent = (QuestCompleteEventData)eventData;
+        UpdateMoney(questCompleteEvent.quest.gold);
+    }
+
     private void UpdateMoney(int pValue)
     {
         money.value += pValue;

@@ -1,10 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeEnemyBehaviour : EnemyBehaviour
 {
-    [SerializeField]
-    private LayerMask playerLayer;
-
     [SerializeField]
     private float moveDirTime = 2.0f;
     private float moveTimeLeft;
@@ -49,6 +47,7 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
     {
         if (!isAttacking)
         {
+            if (anim.GetBool("Dash")) anim.SetBool("Dash", false);
             if (AttackRay())
             {
                 PrepareAttack();
@@ -62,6 +61,7 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
             }
             else
             {
+                anim.SetBool("Dash", true);
                 rb.linearVelocityX = attackMoveSpeed * moveDir;
             }
         }
@@ -69,9 +69,11 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
 
     private void PrepareAttack()
     {
+        if (anim.GetBool("HitWall")) anim.SetBool("HitWall", false);
         isAttacking = true;
         rb.linearVelocityX = 0;
         timeToAttack = enemy.AttackDelay;
+        anim.SetTrigger("StartDash");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -104,6 +106,8 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
         else
         {
             isAttacking = false;
+            anim.SetBool("Dash", false);
+            anim.SetBool("HitWall", true);
             if (collision.gameObject.CompareTag("Player"))
             {
                 collision.gameObject.GetComponent<PlayerModel>().GetHit(damageData);
@@ -113,7 +117,12 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
 
     private bool HitObstacle()
     {
-        return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, lookDir, .1f);
+        bool result = false;
+        List<RaycastHit2D> results = new List<RaycastHit2D>();
+        if (col.Cast(lookDir, results, 0.1f) > 0) result = true;
+        return result;
+        //return Physics2D.Raycast(col.bounds.center, lookDir, (col.size.x / 2) + 0.1f);
+        //return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, lookDir, .1f);
     }
 
     private bool AttackRay()

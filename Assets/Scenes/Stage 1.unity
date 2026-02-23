@@ -94017,6 +94017,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887329916}
   m_CullTransparentMesh: 1
+--- !u!1 &1898272523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898272525}
+  - component: {fileID: 1898272527}
+  - component: {fileID: 1898272526}
+  - component: {fileID: 1898272528}
+  m_Layer: 0
+  m_Name: QuestSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1898272525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898272523}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.87607, y: 1.67292, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898272526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898272523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f341853401b774f9ee3fc5ecef3533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillRangedEnemyQuest
+  handler: {fileID: 1898272527}
+  targetQuestName: RangedEnemyKillQuest
+--- !u!114 &1898272527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898272523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1589e5880a088164a98374dad6421413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestHandler
+  quests:
+  - questName: RangedEnemyKillQuest
+    goal: 2
+    progress: 0
+    questMessage: Kill ranged enemies
+    gold: 200
+    xp: 150
+  questCompleteEvent: {fileID: 11400000, guid: 0e97c3433e80394458fdf98a9639cea0, type: 2}
+--- !u!114 &1898272528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898272523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17dc0804a9b6247860b78ce4b76a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEventSubscriber
+  gameEvent: {fileID: 11400000, guid: e8f8dc70d49b0254387ecfcd4e77944b, type: 2}
+  onEventPublished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1898272526}
+        m_TargetAssemblyTypeName: KillRangedEnemyQuest, Assembly-CSharp
+        m_MethodName: GetEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2062682577
 GameObject:
   m_ObjectHideFlags: 0
@@ -94106,6 +94202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2083012559}
   - component: {fileID: 2083012558}
+  - component: {fileID: 2083012560}
   - component: {fileID: 2083012557}
   m_Layer: 0
   m_Name: MoneyController
@@ -94170,6 +94267,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2083012560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083012556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17dc0804a9b6247860b78ce4b76a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEventSubscriber
+  gameEvent: {fileID: 11400000, guid: 0e97c3433e80394458fdf98a9639cea0, type: 2}
+  onEventPublished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2083012557}
+        m_TargetAssemblyTypeName: MoneyController, Assembly-CSharp
+        m_MethodName: OnQuestCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &293164065733776341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94304,10 +94429,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2875978303130397064, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8eff5be853a9cd742b76b728cc0cf60e, type: 2}
     - target: {fileID: 5243211502931140485, guid: a4d388e438d04194ab2edb636d0c8422, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.43
@@ -94566,4 +94687,5 @@ SceneRoots:
   - {fileID: 293164065733776341}
   - {fileID: 769566443}
   - {fileID: 2083012559}
+  - {fileID: 1898272525}
   - {fileID: 2062682580}

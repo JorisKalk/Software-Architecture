@@ -173,12 +173,7 @@ public class RangedEnemyBehaviour : EnemyBehaviour
             directionalLaserOffset = laserOriginOffset;
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(col.bounds.center + directionalLaserOffset, PlayerDir(), enemy.AttackRange);
-        if (hit && hit.collider.gameObject.CompareTag("Player"))
-        {
-            return true;
-        }
-        else return false;
+        return Physics2D.Raycast(col.bounds.center + directionalLaserOffset, PlayerDir(), enemy.AttackRange, playerLayer);
     }
 
     public void StartReload()

@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb1c0da3d9b88340a59281952c64b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyBehaviour
-  enemyController: {fileID: 688986299834904162}
-  attackCooldown: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyController: {fileID: 688986299834904162}
+  attackCooldown: 0
   moveDirTime: 2
   attackMoveSpeed: 20
 --- !u!114 &5926523739321463572

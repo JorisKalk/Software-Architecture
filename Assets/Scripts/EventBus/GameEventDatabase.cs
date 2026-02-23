@@ -23,3 +23,22 @@ public class EnemyDieEventData : EventData
         }
     }
 }
+
+public class QuestCompleteEventData : EventData
+{
+    public QuestData quest;
+    public QuestCompleteEventData(QuestData pQuest)
+    {
+        name = "QuestCompleteEvent";
+        quest = pQuest;
+    }
+
+    public override string ToString()
+    {
+        return "Event name: " + name + "\n" +
+            "Quest named [" + quest.questName + "] was completed.\n" +
+            "Rewards:\n" +
+            "Gold: " + quest.gold + "\n" +
+            "XP: " + quest.xp;
+    }
+}
