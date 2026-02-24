@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class AbstractQuest : MonoBehaviour
 {
     [SerializeField]
-    QuestHandler handler;
+    protected QuestHandler handler;
 
     [SerializeField]
     protected string targetQuestName;
@@ -16,7 +16,7 @@ public abstract class AbstractQuest : MonoBehaviour
         if (questData == null)
         {
             Debug.Log("Couldn't find quest with name: " + targetQuestName);
-            this.enabled = false;
+            Destroy(this);
         }
         UpdateQuestText();
     }

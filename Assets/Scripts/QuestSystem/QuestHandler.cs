@@ -4,18 +4,15 @@ using System.Collections.Generic;
 public class QuestHandler : MonoBehaviour
 {
     [SerializeField]
-    public List<QuestData> quests = new List<QuestData>();
+    private List<QuestData> quests = new List<QuestData>();
     [SerializeField]
     private GameEvent questCompleteEvent;
+
+    private List<QuestData> completedQuests = new List<QuestData>();
 
     void Start()
     {
         int something = quests.Count;
-    }
-
-    void Update()
-    {
-        
     }
 
     public QuestData FindData(string name)
@@ -34,6 +31,12 @@ public class QuestHandler : MonoBehaviour
 
     public void CompleteQuest(QuestData data)
     {
+        completedQuests.Add(data);
         questCompleteEvent.Publish(new QuestCompleteEventData(data), this.gameObject);
+    }
+
+    public List<QuestData> CompletedQuests()
+    {
+        return completedQuests;
     }
 }

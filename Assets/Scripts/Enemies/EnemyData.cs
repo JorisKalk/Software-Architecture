@@ -13,10 +13,11 @@ public class EnemyData : ScriptableObject
     public int moneyMin;
     public int moneyMax;
     public int xp;
+    public int potionsDropped;
 
     public Enemy CreateEnemy()
     {
-        return new Enemy(enemyType, maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax, xp);
+        return new Enemy(enemyType, maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax, xp, potionsDropped);
     }
 }
 
@@ -44,8 +45,10 @@ public class Enemy
     private int moneyDropped;
     public int XP => xp;
     private int xp;
+    public int PotionsDropped => potionsDropped;
+    private int potionsDropped;
 
-    public Enemy(string pEnemyType, int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP)
+    public Enemy(string pEnemyType, int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP, int pPotionsDropped)
     {
         enemyType = pEnemyType;
         maxHP = pMaxHP;
@@ -58,5 +61,6 @@ public class Enemy
         moneyMax = pMoneyMax;
         moneyDropped = UnityEngine.Random.Range(moneyMin, moneyMax + 1);
         xp = pXP;
+        potionsDropped = pPotionsDropped;
     }
 }

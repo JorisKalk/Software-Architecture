@@ -33,8 +33,6 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
             }
             else
             {
-                if (sprite.flipX) sprite.flipX = false;
-                else sprite.flipX = true;
                 ReverseMoveDir();
             }
         }
@@ -82,13 +80,11 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
 
         if (sprite.flipX && HitObstacle())
         {
-            sprite.flipX = false;
             ReverseMoveDir();
             CheckForAttackEnd(collision);
         }
         else if (!sprite.flipX && HitObstacle())
         {
-            sprite.flipX = true;
             ReverseMoveDir();
             CheckForAttackEnd(collision);
         }
@@ -96,6 +92,8 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
 
     private void ReverseMoveDir()
     {
+        if (sprite.flipX) sprite.flipX = false;
+        else sprite.flipX = true;
         moveDir *= -1f;
         moveTimeLeft = moveDirTime;
     }
@@ -121,8 +119,6 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
         List<RaycastHit2D> results = new List<RaycastHit2D>();
         if (col.Cast(lookDir, results, 0.1f) > 0) result = true;
         return result;
-        //return Physics2D.Raycast(col.bounds.center, lookDir, (col.size.x / 2) + 0.1f);
-        //return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, lookDir, .1f);
     }
 
     private bool AttackRay()
