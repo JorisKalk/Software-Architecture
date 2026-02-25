@@ -14,10 +14,13 @@ public class EnemyData : ScriptableObject
     public int moneyMax;
     public int xp;
     public int potionsDropped;
+    public string[] potionTypes;
+    public int[] potionChances;
 
     public Enemy CreateEnemy()
     {
-        return new Enemy(enemyType, maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax, xp, potionsDropped);
+        return new Enemy(enemyType, maxHP, speed, attackRange, attackDelay, damageDealt, moneyMin, moneyMax,
+            xp, potionsDropped, potionTypes, potionChances);
     }
 }
 
@@ -47,8 +50,12 @@ public class Enemy
     private int xp;
     public int PotionsDropped => potionsDropped;
     private int potionsDropped;
+    public string PotionTypeDropped => potionTypeDropped;
+    private string potionTypeDropped;
 
-    public Enemy(string pEnemyType, int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay, int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP, int pPotionsDropped)
+    public Enemy(string pEnemyType, int pMaxHP, float pSpeed, float pAttackRange, float pAttackDelay,
+        int pDamageDealt, int pMoneyMin, int pMoneyMax, int pXP, int pPotionsDropped,
+        string[] pPotionTypes, int[] pPotionTypeOdds)
     {
         enemyType = pEnemyType;
         maxHP = pMaxHP;
@@ -62,5 +69,36 @@ public class Enemy
         moneyDropped = UnityEngine.Random.Range(moneyMin, moneyMax + 1);
         xp = pXP;
         potionsDropped = pPotionsDropped;
+        if (potionsDropped > 0)
+        {
+            potionTypeDropped = DroppedPotionType(pPotionTypes, pPotionTypeOdds);
+        }
+        else
+        {
+            potionTypeDropped = "none";
+        }
+    }
+
+    private string DroppedPotionType(string[] pPotionTypes, int[] pPotionTypeOdds)
+    {
+        int totalOdds = 0;
+        foreach (int odds in pPotionTypeOdds) totalOdds += odds;
+        if (totalOdds == 0)
+        {
+            potionsDropped = 0;
+            return "none";
+        }
+        int randomInt = UnityEngine.Random.Range(1, totalOdds + 1);
+        int currentOdds = 0;
+        for (int i = 0; i < pPotionTypeOdds.Length; i++)
+        {
+            currentOdds += pPotionTypeOdds[i];
+            if (randomInt <= currentOdds)
+            {
+                return pPotionTypes[i];
+            }
+        }
+        potionsDropped = 0;
+        return "none";
     }
 }

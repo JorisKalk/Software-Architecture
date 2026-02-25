@@ -22,3 +22,7 @@ MonoBehaviour:
   moneyMax: 12
   xp: 20
   potionsDropped: 1
+  potionTypes:
+  - Small
+  - Medium
+  potionChances: 1e00000014000000

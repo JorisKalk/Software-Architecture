@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2301544538322630471}
   - component: {fileID: 4662826240532553732}
   - component: {fileID: 3443111642407306744}
+  - component: {fileID: 4326549626481274128}
   - component: {fileID: 8473365955702691761}
   - component: {fileID: 8835869159263840855}
   - component: {fileID: 6454464379183327291}
@@ -222,6 +223,34 @@ MonoBehaviour:
       - m_Target: {fileID: 8241072214180880706}
         m_TargetAssemblyTypeName: PlayerModel, Assembly-CSharp
         m_MethodName: OnQuestCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4326549626481274128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730625269143140586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17dc0804a9b6247860b78ce4b76a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEventSubscriber
+  gameEvent: {fileID: 11400000, guid: 639ba98fa47aec441a9ed7e890fe31c0, type: 2}
+  onEventPublished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8241072214180880706}
+        m_TargetAssemblyTypeName: PlayerModel, Assembly-CSharp
+        m_MethodName: OnPotionUsed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

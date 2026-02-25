@@ -42,3 +42,21 @@ public class QuestCompleteEventData : EventData
             "XP: " + quest.xp;
     }
 }
+
+public class PotionUsedEventData : EventData
+{
+    public string potionUsed;
+    public int healAmount;
+    public PotionUsedEventData(string pPotionUsed, int pHealAmount)
+    {
+        potionUsed = pPotionUsed;
+        healAmount = pHealAmount;
+    }
+
+    public override string ToString()
+    {
+        return "Event name: " + name + "\n" +
+            "Potion used: " + potionUsed + "\n" +
+            "Heals for: " + healAmount;
+    }
+}

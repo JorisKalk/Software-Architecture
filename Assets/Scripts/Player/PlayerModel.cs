@@ -49,11 +49,6 @@ public class PlayerModel : MonoBehaviour
     [SerializeField]
     private IntValue maxXP;
 
-    [Header("Temp Values")]
-    [SerializeField]
-    private int tempPotionHealing = 25;
-    private int potions = 0;
-
     public event Action<Player> PlayerCreated;
     public event Action<Player, DamageData> OnHit;
     //TODO: make sure that you change int to healingdata everywhere if you ever implement healingdata
@@ -69,39 +64,10 @@ public class PlayerModel : MonoBehaviour
         SetGuiValues();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TryHeal();
-        }
-    }
-
     private void OnEnable()
     {
         movementController.SetMovementValues(baseStats);
         attackController.SetAttackData(rangedWeapon, rangedWeapon.projectileData);
-    }
-
-    private void TryHeal()
-    {
-        if (potions > 0 && player.currentHP < player.MaxHP)
-        {
-            potions--;
-            player.currentHP += tempPotionHealing;
-            if (player.currentHP > player.MaxHP)
-            {
-                player.currentHP = player.MaxHP;
-            }
-
-            currentHP.value = player.currentHP;
-
-            OnHeal?.Invoke(player, tempPotionHealing);
-        }
-        else
-        {
-            Debug.Log("couldn't heal");
-        }
     }
 
     public void GetHit(DamageData damageData)
@@ -122,8 +88,6 @@ public class PlayerModel : MonoBehaviour
     {
         EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;
         GainXP(enemyDieEvent.enemy.XP);
-
-        potions += enemyDieEvent.enemy.PotionsDropped;
     }
 
     public void OnQuestCompleted(EventData eventData)
@@ -131,6 +95,21 @@ public class PlayerModel : MonoBehaviour
         QuestCompleteEventData questCompleteEvent = (QuestCompleteEventData)eventData;
 
         GainXP(questCompleteEvent.quest.xp);
+    }
+
+    public void OnPotionUsed(EventData eventData)
+    {
+        PotionUsedEventData potionUsedEvent = (PotionUsedEventData)eventData;
+
+        player.currentHP += potionUsedEvent.healAmount;
+        if (player.currentHP > player.MaxHP)
+        {
+            player.currentHP = player.MaxHP;
+        }
+
+        currentHP.value = player.currentHP;
+
+        OnHeal?.Invoke(player, potionUsedEvent.healAmount);
     }
 
     private void GainXP(int xpGained)
