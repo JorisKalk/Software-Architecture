@@ -10,11 +10,6 @@ public class QuestHandler : MonoBehaviour
 
     private List<QuestData> completedQuests = new List<QuestData>();
 
-    void Start()
-    {
-        int something = quests.Count;
-    }
-
     public QuestData FindData(string name)
     {
         foreach (QuestData data in quests)

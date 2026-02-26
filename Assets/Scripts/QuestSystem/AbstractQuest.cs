@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using UnityEditor;
 
 public abstract class AbstractQuest : MonoBehaviour
 {
@@ -8,9 +10,14 @@ public abstract class AbstractQuest : MonoBehaviour
     [SerializeField]
     protected string targetQuestName;
 
+    [SerializeField]
+    protected string nameOffQuestDetailsMenu;
+
     protected QuestData questData;
 
-    void Start()
+    protected QuestMenu infoMenu;
+
+    protected void Awake()
     {
         questData = handler.FindData(targetQuestName);
         if (questData == null)
@@ -18,7 +25,19 @@ public abstract class AbstractQuest : MonoBehaviour
             Debug.Log("Couldn't find quest with name: " + targetQuestName);
             Destroy(this);
         }
-        UpdateQuestText();
+
+        infoMenu = GameObject.Find(nameOffQuestDetailsMenu).GetComponent<QuestMenu>();
+        if (infoMenu == null)
+        {
+            throw new Exception("Couldn't find quest list with name: " + nameOffQuestDetailsMenu);
+        }
+        else
+        {
+            infoMenu.quests.Add(this);
+            Debug.Log("quest added");
+        }
+
+            UpdateQuestText();
     }
 
     protected void UpdateProgress(int pProgress)
@@ -34,11 +53,17 @@ public abstract class AbstractQuest : MonoBehaviour
 
     protected void UpdateQuestText()
     {
+        infoMenu.UpdateText();
         Debug.Log(questData.questMessage + "\n" +
             "Progress: " + questData.progress + " / " + questData.goal + "\n" +
             "Rewards:\n" +
             "Gold: " + questData.gold + "\n" +
             "XP: " + questData.xp);
+    }
+
+    public QuestData GiveQuestData()
+    {
+        return questData;
     }
 
     public abstract void GetEvent(EventData eventData);
