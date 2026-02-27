@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   maxHP: 100
-  moveSpeed: 7
+  moveSpeed: 9
   jumpForce: 20
   xpToFirstLevel: 100
   levelXpMultiplier: 1.1

@@ -15,8 +15,9 @@ public class EnemySpawnHandling : MonoBehaviour
     [SerializeField]
     private List<GameObject> enemySpawners = new List<GameObject>();
 
-    void Start()
+    public List<GameObject> StartStage()
     {
+        List<GameObject> result = new List<GameObject>();
         for (int i = enemySpawners.Count - 1; i >= 0; --i)
         {
             if (enemySpawners[i] == null)
@@ -34,9 +35,11 @@ public class EnemySpawnHandling : MonoBehaviour
         {
             int spawnIndex = Random.Range(0, spawnableEnemies.Length);
             int pickedSpawner = Random.Range(0, enemySpawners.Count);
-            enemySpawners[pickedSpawner].GetComponent<EnemySpawner>().SpawnEnemy(spawnableEnemies[spawnIndex]);
+            result.Add(enemySpawners[pickedSpawner].GetComponent<EnemySpawner>().SpawnEnemy(spawnableEnemies[spawnIndex]));
             Destroy(enemySpawners[pickedSpawner].gameObject);
             enemySpawners.RemoveAt(pickedSpawner);
         }
+
+        return result;
     }
 }
