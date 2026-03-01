@@ -33,13 +33,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
         enemyController.onEnemyCreated += OnEnemyCreated;
-        enemyController.onEnemyCreated += ExtraOnEnemyCreated;
     }
 
     protected void OnDisable()
     {
         enemyController.onEnemyCreated -= OnEnemyCreated;
-        enemyController.onEnemyCreated -= ExtraOnEnemyCreated;
     }
 
     protected void Update()
@@ -51,14 +49,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    protected void OnEnemyCreated(Enemy enemy)
+    protected virtual void OnEnemyCreated(Enemy enemy)
     {
         this.enemy = enemy;
         damageData = enemyController.dealtDamageData;
         damageData.damage += enemy.DamageDealt;
     }
-
-    protected abstract void ExtraOnEnemyCreated(Enemy enemy);
 
     protected abstract void MoveBehaviour();
 

@@ -27,7 +27,10 @@ public class EnemyController : MonoBehaviour
     public void GetHit(DamageData damageData)
     {
         enemy.currentHP -= damageData.damage;
-        anim.SetTrigger("Hit");
+        if (enemy.EnemyType != "Boss")
+        {
+            anim.SetTrigger("Hit");
+        }
         if (enemy.currentHP < 0)
         {
             enemy.currentHP = 0;

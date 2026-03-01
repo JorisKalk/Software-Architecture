@@ -1,9 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEditor.SceneManagement;
-using System.ComponentModel;
-using UnityEngine.UI;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class PlayerModel : MonoBehaviour

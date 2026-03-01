@@ -61,8 +61,9 @@ public class RangedEnemyBehaviour : EnemyBehaviour
         laser.enabled = false;
     }
 
-    protected override void ExtraOnEnemyCreated(Enemy enemy)
+    protected override void OnEnemyCreated(Enemy enemy)
     {
+        base.OnEnemyCreated(enemy);
         damage = damageData.damage + projectileData.damageData.damage;
         projectileSpeed = projectileData.projectileSpeed;
         attackProjectile = projectileData.projectile;

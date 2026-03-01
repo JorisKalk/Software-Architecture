@@ -20,8 +20,6 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
         moveTimeLeft = moveDirTime / 2f;
     }
 
-    protected override void ExtraOnEnemyCreated(Enemy enemy) { }
-
     protected override void MoveBehaviour()
     {
         if (!isAttacking)

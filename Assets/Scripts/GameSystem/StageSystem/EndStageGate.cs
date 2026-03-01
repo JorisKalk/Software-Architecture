@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class EndStageGate : MonoBehaviour
 {
-    public void OnBossKilled(EventData eventData)
+    public void OnEnemyKilled(EventData eventData)
     {
-        Destroy(gameObject);
+        EnemyDieEventData enemyDieEvent = (EnemyDieEventData)eventData;
+        if (enemyDieEvent.enemy.EnemyType == "Boss")
+        {
+            Destroy(gameObject);
+        }
     }
 }
