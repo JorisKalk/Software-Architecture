@@ -95,4 +95,23 @@ public class BossStateMachine : FSM
         onStartReloading?.Invoke();
     }
 
+    public void HasAttacked()
+    {
+        if (currentState == bounceAttackState)
+        {
+            bounceAttackState.attacked = true;
+        }
+        else if (currentState == pierceAttackState)
+        {
+            pierceAttackState.attacked = true;
+        }
+    }
+
+    public void Reloaded()
+    {
+        if (currentState == reloadState)
+        {
+            reloadState.reloaded = true;
+        }
+    }
 }

@@ -13,9 +13,6 @@ public abstract class State
     [SerializeReference]
     public List<Transition> transitions = new List<Transition>();
 
-    //check if I actually use this anywhere
-    protected Blackboard blackboard;
-
     public virtual void Enter()
     {
         onEnter?.Invoke();

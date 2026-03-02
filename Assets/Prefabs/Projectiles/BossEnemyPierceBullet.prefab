@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6034143880238747901}
   - component: {fileID: 8757080392512430962}
   - component: {fileID: 7930968940479938236}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: BossEnemyPierceBullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -179,6 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe3f56a65a8d6e4a90f0f195fdcc834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPierceProjectile
+  damageData:
+    damage: 0
+    damageType: {fileID: 0}
+  lifeTime: 0
 --- !u!95 &7930968940479938236
 Animator:
   serializedVersion: 7

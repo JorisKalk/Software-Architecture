@@ -101,4 +101,13 @@ public class Enemy
         potionsDropped = 0;
         return "none";
     }
+
+    public void EnemyExpired(EnemyController controller)
+    {
+        enemyType = "none";
+        moneyDropped = 0;
+        xp = 0;
+        potionTypeDropped = "none";
+        controller.GetHit(new DamageData(maxHP, null));
+    }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2178748a096c0d42934c73577bffd95, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  maxHP: 100
-  moveSpeed: 9
+  maxHP: 1000000
+  moveSpeed: 12
   jumpForce: 20
   xpToFirstLevel: 100
   levelXpMultiplier: 1.1

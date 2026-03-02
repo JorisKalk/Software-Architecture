@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerModel : MonoBehaviour
 {
     private Animator anim;
+    private SpriteRenderer sprite;
 
     [Header("Player Attributes")]
     [SerializeField]
@@ -45,6 +46,16 @@ public class PlayerModel : MonoBehaviour
     [SerializeField]
     private IntValue maxXP;
 
+    [Header("Hit Visuals Values")]
+    [SerializeField]
+    private Color defaultColor;
+    [SerializeField]
+    private Color hitColor;
+    [SerializeField]
+    private float hitColorTime;
+    private float colorTimer;
+    private bool hit = false;
+
     public event Action<Player> PlayerCreated;
     public event Action<Player, DamageData> OnHit;
     //TODO: make sure that you change int to healingdata everywhere if you ever implement healingdata
@@ -54,10 +65,27 @@ public class PlayerModel : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
 
         player = baseStats.CreatePlayer();
         PlayerCreated?.Invoke(player);
         SetGuiValues();
+    }
+
+    private void Update()
+    {
+        if (hit)
+        {
+            if (colorTimer > 0)
+            {
+                colorTimer -= Time.deltaTime;
+            }
+            else
+            {
+                hit = false;
+                sprite.color = defaultColor;
+            }
+        }
     }
 
     private void OnEnable()
@@ -68,6 +96,10 @@ public class PlayerModel : MonoBehaviour
 
     public void GetHit(DamageData damageData)
     {
+        hit = true;
+        sprite.color = hitColor;
+        colorTimer = hitColorTime;
+
         player.currentHP -= damageData.damage;
         if (player.currentHP < 0)
         {

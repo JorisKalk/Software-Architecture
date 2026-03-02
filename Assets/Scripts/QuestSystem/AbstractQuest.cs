@@ -11,7 +11,7 @@ public abstract class AbstractQuest : MonoBehaviour
     protected string targetQuestName;
 
     [SerializeField]
-    protected string nameOffQuestDetailsMenu;
+    protected GameObject questDetailsMenu;
 
     protected QuestData questData;
 
@@ -26,10 +26,10 @@ public abstract class AbstractQuest : MonoBehaviour
             Destroy(this);
         }
 
-        infoMenu = GameObject.Find(nameOffQuestDetailsMenu).GetComponent<QuestMenu>();
+        infoMenu = questDetailsMenu.GetComponent<QuestMenu>();
         if (infoMenu == null)
         {
-            throw new Exception("Couldn't find quest list with name: " + nameOffQuestDetailsMenu);
+            throw new Exception("Couldn't find quest list");
         }
         else
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e253e128d492f245959a0683dd9b2cc, type: 3}
   m_Name: BossBounceBullet
   m_EditorClassIdentifier: Assembly-CSharp::RangedProjectileData
-  projectileSpeed: 25
+  projectileSpeed: 40
   projectile: {fileID: 2659560275873394547, guid: e2abab8ce5fc45e4390bba163bf37bc0, type: 3}
   damageData:
     damage: 0

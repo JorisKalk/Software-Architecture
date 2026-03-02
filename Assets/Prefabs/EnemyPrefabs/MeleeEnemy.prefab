@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4791314241967503926}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.99, y: -6.2699995, z: 0}
+  m_LocalPosition: {x: 152.44238, y: -4.24507, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -114,6 +114,9 @@ MonoBehaviour:
     damage: 0
     damageType: {fileID: 11400000, guid: d4727ba06efd04045be8aad70487cd71, type: 2}
   died: 0
+  bossHitColor: {r: 0, g: 0, b: 0, a: 0}
+  bossDefaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hitColorTime: 0
 --- !u!114 &1646729584330610
 MonoBehaviour:
   m_ObjectHideFlags: 0

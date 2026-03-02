@@ -18,8 +18,8 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - TerrainTrigger
-  - 
-  - 
+  - EnemyPierceProjectile
+  - PlayerBarrier
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: NotVisual
+    uniqueID: 2433618859
+    locked: 0
   - name: Background
     uniqueID: 91409537
     locked: 0

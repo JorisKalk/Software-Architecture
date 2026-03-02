@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e253e128d492f245959a0683dd9b2cc, type: 3}
   m_Name: BossPierceBullet
   m_EditorClassIdentifier: Assembly-CSharp::RangedProjectileData
-  projectileSpeed: 40
+  projectileSpeed: 60
   projectile: {fileID: 4665605662888521090, guid: 6e8542aafacf6ec408c27d1321315a00, type: 3}
   damageData:
     damage: 0

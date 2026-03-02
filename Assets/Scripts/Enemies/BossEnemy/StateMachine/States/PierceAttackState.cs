@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class PierceAttackState : State
 {
-    public bool Attacked;
+    public bool attacked;
 
     public override void Enter()
     {
         base.Enter();
 
-        Attacked = false;
+        attacked = false;
     }
 
     public bool HasAttacked()
     {
-        return Attacked;
+        return attacked;
     }
 }

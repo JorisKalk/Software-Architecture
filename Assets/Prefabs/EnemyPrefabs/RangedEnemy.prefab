@@ -118,6 +118,9 @@ MonoBehaviour:
     damage: 0
     damageType: {fileID: 11400000, guid: d4727ba06efd04045be8aad70487cd71, type: 2}
   died: 0
+  bossHitColor: {r: 0, g: 0, b: 0, a: 0}
+  bossDefaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hitColorTime: 0
 --- !u!114 &5943605395330033925
 MonoBehaviour:
   m_ObjectHideFlags: 0

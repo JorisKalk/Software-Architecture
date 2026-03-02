@@ -8,6 +8,10 @@ public class AttackState : State
     private int totalAttackChance;
 
     private int randomInt;
+    private int toReturn;
+
+    private float waitTime = 0.1f;
+    private float startTime;
 
     public AttackState(int pBounceChance, int pPierceChance)
     {
@@ -19,23 +23,28 @@ public class AttackState : State
     public override void Enter()
     {
         base.Enter();
-
+        startTime = Time.time;
         randomInt = UnityEngine.Random.Range(1, totalAttackChance + 1);
-    }
-
-    public int ChosenAttack()
-    {
         if (randomInt <= bounceChance)
         {
             bounceChance--;
             pierceChance++;
-            return 0;
+            toReturn = 0;
         }
         else
         {
             bounceChance++;
             pierceChance--;
-            return 1;
+            toReturn = 1;
         }
+    }
+
+    public int ChosenAttack()
+    {
+        if (Time.time >= startTime + waitTime)
+        {
+            return toReturn;
+        }
+        else return -1;
     }
 }

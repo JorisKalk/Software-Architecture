@@ -45,18 +45,11 @@ public class QuestMenu : MonoBehaviour
     {
         for (int i = infoPanels.Count - 1; i >= 0; i--)
         {
-            if (i >= quests.Count)
-            {
-                Debug.Log("destroying");
-                Destroy(infoPanels[i].gameObject);
-                infoPanels.RemoveAt(i);
-            }
-            else
-            {
+            
                 QuestData quest = quests[i].GiveQuestData();
                 infoPanels[i].GetComponent<QuestButtonScript>().UpdateText(quest);
                 detailPanel.CheckForTextUpdate(quest);
-            }
+            
         }
     }
 

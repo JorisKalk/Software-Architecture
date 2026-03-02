@@ -131,6 +131,9 @@ MonoBehaviour:
   maxHP: {fileID: 11400000, guid: 768705b9eb35eda4f80eee4b12af104c, type: 2}
   currentXP: {fileID: 11400000, guid: 2fd404a4017fa5e41936d054d79d2654, type: 2}
   maxXP: {fileID: 11400000, guid: 0d352f549db99b94ebafac986361ec33, type: 2}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  hitColorTime: 0.1
 --- !u!114 &6394061610380975866
 MonoBehaviour:
   m_ObjectHideFlags: 0
