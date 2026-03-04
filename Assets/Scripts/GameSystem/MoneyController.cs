@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// Receives events that give the player more money and changes the money value accordingly.
+/// </summary>
 public class MoneyController : MonoBehaviour
 {
     [SerializeField]

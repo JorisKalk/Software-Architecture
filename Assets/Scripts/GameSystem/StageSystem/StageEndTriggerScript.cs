@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Class that triggers the StageSwitchSystem to go to the next stage.
+/// </summary>
 public class StageEndTriggerScript : MonoBehaviour
 {
     [SerializeField]

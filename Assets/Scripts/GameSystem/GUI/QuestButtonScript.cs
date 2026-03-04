@@ -1,6 +1,10 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// This script displays a short version of the quest info on a button and makes the quest menu display
+/// more info when the button is clicked.
+/// </summary>
 public class QuestButtonScript : MonoBehaviour
 {
     [HideInInspector]

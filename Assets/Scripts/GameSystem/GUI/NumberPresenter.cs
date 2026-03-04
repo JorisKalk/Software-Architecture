@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Presents number values in the GUI.
+/// </summary>
 public class NumberPresenter : MonoBehaviour
 {
     [SerializeField]

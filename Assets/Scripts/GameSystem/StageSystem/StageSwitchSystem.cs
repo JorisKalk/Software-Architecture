@@ -1,7 +1,11 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class that handles the switching between stages. When there is no next stage it reloads the scene.
+/// </summary>
 public class StageSwitchSystem : MonoBehaviour
 {
     [SerializeField]
@@ -36,6 +40,7 @@ public class StageSwitchSystem : MonoBehaviour
         if (currentStageIndex >= stages.Count)
         {
             Debug.Log("final stage finished");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             return;
         }
         if (stages[currentStageIndex] == null)

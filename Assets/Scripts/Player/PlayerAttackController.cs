@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Class that controls the player attack.
+/// </summary>
 public class PlayerAttackController : MonoBehaviour
 {
     private SpriteRenderer sprite;

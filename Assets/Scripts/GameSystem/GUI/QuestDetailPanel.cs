@@ -1,6 +1,9 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Class that displays received QuestData in the GUI.
+/// </summary>
 public class QuestDetailPanel : MonoBehaviour
 {
     [SerializeField]

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
+/// <summary>
+/// Class that handles the amount of potions that the player has and publishes an event when a potion gets used.
+/// </summary>
 public class PotionHandler : MonoBehaviour
 {
     [SerializeField]

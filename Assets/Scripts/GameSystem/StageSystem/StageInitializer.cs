@@ -2,6 +2,10 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Class that initializes a stage when the player enters it. When the player goes to the next stage it cleans
+/// up any enemies that are still alive.
+/// </summary>
 public class StageInitializer : MonoBehaviour
 {
     [SerializeField]

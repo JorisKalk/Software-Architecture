@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Makes the gate on the last stage disappear when a boss enemy gets killed.
+/// </summary>
 public class EndStageGate : MonoBehaviour
 {
     private TilemapCollider2D col;

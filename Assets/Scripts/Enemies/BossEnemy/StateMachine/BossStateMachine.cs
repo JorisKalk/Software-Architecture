@@ -7,6 +7,9 @@ public enum AttackChoice
     PIERCE
 }
 
+/// <summary>
+/// State machine for what behaviour the boss enemy will follow.
+/// </summary>
 public class BossStateMachine : FSM
 {
     private BossEnemyBehavior bossBehaviour;

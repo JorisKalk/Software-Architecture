@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Base class for all enemy behaviour. Has base methods for moving and attacking.
+/// </summary>
 public abstract class EnemyBehaviour : MonoBehaviour
 {
     protected Transform tf;

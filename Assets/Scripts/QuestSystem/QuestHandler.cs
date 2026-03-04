@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Class that publishes an event when a quest gets completed and keeps track of a list of completed quests.
+/// </summary>
 public class QuestHandler : MonoBehaviour
 {
     [SerializeField]

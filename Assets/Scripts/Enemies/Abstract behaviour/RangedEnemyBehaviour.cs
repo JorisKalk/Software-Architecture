@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Class that extends EnemyBehaviour to handle the behaviour of ranged enemies. It also handles animations.
+/// </summary>
 public class RangedEnemyBehaviour : EnemyBehaviour
 {
     private LineRenderer laser;

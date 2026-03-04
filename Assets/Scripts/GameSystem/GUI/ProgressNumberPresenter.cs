@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Class that displays two numbers to show progress in the GUI.
+/// </summary>
 public class ProgressNumberPresenter : MonoBehaviour
 {
     [SerializeField]

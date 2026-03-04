@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that extends EnemyBehaviour to handle the behaviour of melee enemies. It also handles animations.
+/// </summary>
 public class MeleeEnemyBehaviour : EnemyBehaviour
 {
     [SerializeField]

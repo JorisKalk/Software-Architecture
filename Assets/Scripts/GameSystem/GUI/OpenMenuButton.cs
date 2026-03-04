@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Opens the attached menu.
+/// </summary>
 public class OpenMenuButton : MonoBehaviour
 {
     [SerializeField]

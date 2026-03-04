@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// The main controller of enemies. It publishes events when the enemy gets created or gets hit.
+/// </summary>
 public class EnemyController : MonoBehaviour
 {
     private Animator anim;

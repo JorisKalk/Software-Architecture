@@ -1,6 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Class that extends EnemyBehaviour to handle the behaviour of the boss enemy with the help of the
+/// BossStateMachine. It also handles animations.
+/// </summary>
 public class BossEnemyBehavior : EnemyBehaviour
 {
     private LineRenderer laser;

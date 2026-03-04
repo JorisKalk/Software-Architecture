@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Base class for observers that subscribes to the events that get called by the PlayerModel.
+/// </summary>
 public abstract class PlayerObserver : MonoBehaviour
 {
     [SerializeField]

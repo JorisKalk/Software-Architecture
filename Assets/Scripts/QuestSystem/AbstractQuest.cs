@@ -2,6 +2,10 @@ using UnityEngine;
 using System;
 using UnityEditor;
 
+/// <summary>
+/// Base class for all the specific quests. Receives events to update progress. Other classes can also
+/// request the QuestData component from this class.
+/// </summary>
 public abstract class AbstractQuest : MonoBehaviour
 {
     [SerializeField]
@@ -23,7 +27,7 @@ public abstract class AbstractQuest : MonoBehaviour
         if (questData == null)
         {
             Debug.Log("Couldn't find quest with name: " + targetQuestName);
-            Destroy(this);
+            //Destroy(this);
         }
 
         infoMenu = questDetailsMenu.GetComponent<QuestMenu>();
@@ -34,6 +38,8 @@ public abstract class AbstractQuest : MonoBehaviour
         else
         {
             infoMenu.quests.Add(this);
+            Debug.Log("length: " + infoMenu.quests.Count.ToString());
+            Debug.Log(this.isActiveAndEnabled.ToString());
             Debug.Log("quest added");
         }
 

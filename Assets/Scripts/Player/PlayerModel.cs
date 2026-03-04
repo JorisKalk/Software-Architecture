@@ -2,6 +2,11 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Main controller for the player. It publishes events when the player gets created, gets hit, get healed,
+/// or when their max hp changes. It also receives events that give the player XP and reacts accordingly.
+/// It resets the scene when the player dies. It also passes values to other controllers for the player.
+/// </summary>
 public class PlayerModel : MonoBehaviour
 {
     private Animator anim;

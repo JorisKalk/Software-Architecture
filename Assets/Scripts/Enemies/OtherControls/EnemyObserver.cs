@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Base class for observers that subscribe to the events that get called by the EnemyController.
+/// </summary>
 public abstract class EnemyObserver : MonoBehaviour
 {
     [SerializeField]

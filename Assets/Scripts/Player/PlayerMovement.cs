@@ -2,6 +2,9 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// The movement controller for the player. It also handles the animations involved with movement.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     [Header ("Layers")]

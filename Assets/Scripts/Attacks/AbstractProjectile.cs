@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// This is the base class for all projectiles. It has a base method for collisions and can let an animation
+/// destroy the projectile at the end.
+/// </summary>
 public abstract class Projectile : MonoBehaviour
 {
     protected Animator anim;

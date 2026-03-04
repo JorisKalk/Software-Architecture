@@ -2,6 +2,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class that displays information for a specific potion type and displays a button for using them when the
+/// player has at least one potion of that type.
+/// </summary>
 public class PotionInventoryPanel : MonoBehaviour
 {
     [HideInInspector]

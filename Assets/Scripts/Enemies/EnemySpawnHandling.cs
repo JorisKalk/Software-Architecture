@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Tells the EnemySpawners when to spawn enemies and which ones.
+/// </summary>
 public class EnemySpawnHandling : MonoBehaviour
 {
     [Header("Spawn Amounts")]
