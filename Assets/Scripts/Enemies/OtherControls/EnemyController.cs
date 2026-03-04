@@ -12,14 +12,14 @@ public class EnemyController : MonoBehaviour
 
     public DamageData dealtDamageData;
 
-    public event Action<Enemy> onEnemyCreated;
+    public event Action<Enemy> OnEnemyCreated;
     public event Action<Enemy, DamageData> OnHit;
 
     public bool died = false;
 
     //only necessary for the boss
     [Header("Variables only important for the boss")]
-    private bool bossHit;
+    private bool bossHit = false;
     [SerializeField]
     private Color bossHitColor;
     [SerializeField]
@@ -28,16 +28,16 @@ public class EnemyController : MonoBehaviour
     private float hitColorTime;
     private float hitTimer;
 
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
         enemy = enemyData.CreateEnemy();
-        onEnemyCreated?.Invoke(enemy);
+        OnEnemyCreated?.Invoke(enemy);
     }
 
-    public void Update()
+    private void Update()
     {
         if (bossHit)
         {
@@ -88,10 +88,5 @@ public class EnemyController : MonoBehaviour
     public void ReturnAnimation()
     {
         anim.SetTrigger("Return");
-    }
-
-    public void EnemyExpired()
-    {
-        enemy.EnemyExpired(this);
     }
 }

@@ -32,12 +32,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
-        enemyController.onEnemyCreated += OnEnemyCreated;
+        enemyController.OnEnemyCreated += OnEnemyCreated;
     }
 
     protected void OnDisable()
     {
-        enemyController.onEnemyCreated -= OnEnemyCreated;
+        enemyController.OnEnemyCreated -= OnEnemyCreated;
     }
 
     protected void Update()

@@ -58,7 +58,6 @@ public class PlayerModel : MonoBehaviour
 
     public event Action<Player> PlayerCreated;
     public event Action<Player, DamageData> OnHit;
-    //TODO: make sure that you change int to healingdata everywhere if you ever implement healingdata
     public event Action<Player, int> OnHeal;
     public event Action<Player> OnMaxHpChanged;
 

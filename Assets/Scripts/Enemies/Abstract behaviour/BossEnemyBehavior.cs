@@ -125,7 +125,7 @@ public class BossEnemyBehavior : EnemyBehaviour
         
         if (isIdle)
         {
-
+            return;
         }
         else if (preparingBounceAttack && AttackTimer())
         {
@@ -145,10 +145,7 @@ public class BossEnemyBehavior : EnemyBehaviour
 
     private void Idle()
     {
-        //isIdle = true;
-        //needs to make sure the timer properly starts
-        //needs to make the animation go back to the default gun aiming sprite.
-        //make sure that the state machine and its steps properly run the step frame every frame!!!!!!!
+        isIdle = true;
     }
 
     private void BounceAttack()
@@ -171,13 +168,6 @@ public class BossEnemyBehavior : EnemyBehaviour
             laser.SetPosition(i, currentPos);
             currentPos += currentDir * 0.1f;
         }
-
-        //dont forget to add bounces left to the projectile after instantiating.
-        //dont forget to add projectilespeed variable to this projectile, not only set velocity because it needs to repeat it on bounces.
-        //needs to trigger the attacking animation
-        //need a method that the attacking animation can trigger that makes the state machine move on from the pierce attack state.
-        //(maybe same method as pierce attack?)
-        //do this by changing the bool in the state.
     }
 
     private void PierceAttack()
@@ -191,19 +181,11 @@ public class BossEnemyBehavior : EnemyBehaviour
         Vector3 startPos = col.bounds.center + laserOriginOffset;
         laser.SetPosition(0, startPos);
         laser.SetPosition(1, startPos + (aimingDir * 400));
-        //dont forget to add lifetime to the projectile after instantiating.
-        //needs to trigger the attacking animation
-        //need a method that the attacking animation can trigger that makes the state machine move on from the pierce attack state.
-        //(maybe same method as bounce attack?)
-        //do this by changing the bool in the state.
     }
 
     private void Reload()
     {
         anim.SetTrigger("StartReload");
-        //reload animation has to be triggered
-        //need a method that the reload animation can trigger that makes the state machine move on from the reload state.
-        //do this by changing the bool in the state.
     }
 
     private void FireBounceBullet()

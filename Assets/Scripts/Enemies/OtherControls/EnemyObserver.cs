@@ -7,13 +7,13 @@ public abstract class EnemyObserver : MonoBehaviour
 
     protected void OnEnable()
     {
-        enemyController.onEnemyCreated += OnEnemyCreated;
+        enemyController.OnEnemyCreated += OnEnemyCreated;
         enemyController.OnHit += OnEnemyHit;
     }
 
     protected void OnDisable()
     {
-        enemyController.onEnemyCreated -= OnEnemyCreated;
+        enemyController.OnEnemyCreated -= OnEnemyCreated;
         enemyController.OnHit -= OnEnemyHit;
     }
 

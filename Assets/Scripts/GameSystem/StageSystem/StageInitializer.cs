@@ -27,7 +27,7 @@ public class StageInitializer : MonoBehaviour
         {
             if (enemyList[i] != null)
             {
-                enemyList[i].gameObject.GetComponent<EnemyController>().EnemyExpired();
+                Destroy(enemyList[i]);
                 enemyList.RemoveAt(i);
             }
             else

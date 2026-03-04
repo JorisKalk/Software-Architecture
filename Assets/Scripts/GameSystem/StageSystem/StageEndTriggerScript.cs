@@ -3,7 +3,7 @@ using UnityEngine;
 public class StageEndTriggerScript : MonoBehaviour
 {
     [SerializeField]
-    StageSwitchSystem stageSwitchSystem;
+    private StageSwitchSystem stageSwitchSystem;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

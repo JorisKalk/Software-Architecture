@@ -40,9 +40,7 @@ public class Enemy
     private float attackDelay;
     public int DamageDealt => damageDealt;
     private int damageDealt;
-    public int MoneyMin => moneyMin;
     private int moneyMin;
-    public int MoneyMax => moneyMax;
     private int moneyMax;
     public int MoneyDropped => moneyDropped;
     private int moneyDropped;
@@ -100,14 +98,5 @@ public class Enemy
         }
         potionsDropped = 0;
         return "none";
-    }
-
-    public void EnemyExpired(EnemyController controller)
-    {
-        enemyType = "none";
-        moneyDropped = 0;
-        xp = 0;
-        potionTypeDropped = "none";
-        controller.GetHit(new DamageData(maxHP, null));
     }
 }
