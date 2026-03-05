@@ -38,7 +38,10 @@ public class RangedEnemyBehaviour : EnemyBehaviour
     private void Start()
     {
         laser = GetComponent<LineRenderer>();
-        playerCol = GameObject.Find("Player").GetComponent<BoxCollider2D>();
+        if (GameObject.Find("Player") != null)
+        {
+            playerCol = GameObject.Find("Player").GetComponent<BoxCollider2D>();
+        }
         
         SetOffsets();
         SetupLaser();
@@ -117,7 +120,7 @@ public class RangedEnemyBehaviour : EnemyBehaviour
 
     private void LookAtPlayer()
     {
-        if (playerCol.bounds.center.x < tf.position.x)
+        if (playerCol != null && playerCol.bounds.center.x < tf.position.x)
         {
             sprite.flipX = true;
         }
@@ -160,6 +163,7 @@ public class RangedEnemyBehaviour : EnemyBehaviour
 
     private Vector3 PlayerDir()
     {
+        if (playerCol == null) return new Vector3(1, 0, 0);
         Vector3 playerDir = playerCol.bounds.center - (col.bounds.center + directionalLaserOffset);
         playerDir.Normalize();
         return playerDir;

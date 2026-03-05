@@ -6,12 +6,12 @@ using System;
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
-    private Animator anim;
-    private SpriteRenderer sprite;
+    protected Animator anim;
+    protected SpriteRenderer sprite;
 
     [SerializeField]
-    private EnemyData enemyData;
-    private Enemy enemy;
+    protected EnemyData enemyData;
+    protected Enemy enemy;
 
     public DamageData dealtDamageData;
 
@@ -20,18 +20,7 @@ public class EnemyController : MonoBehaviour
 
     public bool died = false;
 
-    //only necessary for the boss
-    [Header("Variables only important for the boss")]
-    private bool bossHit = false;
-    [SerializeField]
-    private Color bossHitColor;
-    [SerializeField]
-    private Color bossDefaultColor;
-    [SerializeField]
-    private float hitColorTime;
-    private float hitTimer;
-
-    private void Start()
+    protected void Start()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
@@ -40,41 +29,22 @@ public class EnemyController : MonoBehaviour
         OnEnemyCreated?.Invoke(enemy);
     }
 
-    private void Update()
-    {
-        if (bossHit)
-        {
-            if (hitTimer > 0)
-            {
-                hitTimer -= Time.deltaTime;
-            }
-            else
-            {
-                bossHit = false;
-                sprite.color = bossDefaultColor;
-            }
-        }
-    }
-
-    public void GetHit(DamageData damageData)
+    public virtual void GetHit(DamageData damageData)
     {
         enemy.currentHP -= damageData.damage;
-        if (enemy.EnemyType != "Boss" && anim != null)
-        {
-            anim.SetTrigger("Hit");
-        }
-        else if (sprite != null)
-        {
-            bossHit = true;
-            sprite.color = bossHitColor;
-            hitTimer = hitColorTime;
-        }
+
+        anim.SetTrigger("Hit");
 
         if (enemy.currentHP < 0)
         {
             enemy.currentHP = 0;
         }
 
+        CallOnHit(enemy, damageData);
+    }
+
+    protected void CallOnHit(Enemy enemy, DamageData damageData)
+    {
         OnHit?.Invoke(enemy, damageData);
     }
 

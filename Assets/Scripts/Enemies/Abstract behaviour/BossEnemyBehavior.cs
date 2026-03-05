@@ -65,7 +65,10 @@ public class BossEnemyBehavior : EnemyBehaviour
         base.OnEnemyCreated(enemy);
 
         laser = GetComponent<LineRenderer>();
-        playerCol = GameObject.Find("Player").GetComponent<BoxCollider2D>();
+        if (GameObject.Find("Player") != null)
+        {
+            playerCol = GameObject.Find("Player").GetComponent<BoxCollider2D>();
+        }
 
         if (bossStateMachine == null)
         {
@@ -238,6 +241,7 @@ public class BossEnemyBehavior : EnemyBehaviour
 
     private Vector3 PlayerDir()
     {
+        if (playerCol == null) return new Vector3(1, 0, 0);
         Vector3 playerDir = playerCol.bounds.center - (col.bounds.center + laserOriginOffset);
         playerDir.Normalize();
         return playerDir;

@@ -25,8 +25,10 @@ public class PotionInventoryPanel : MonoBehaviour
             Debug.Log("Panel is missing handler");
             Destroy(this.gameObject);
         }
-
-        potionHandler.RequestValues(this);
+        else
+        {
+            potionHandler.RequestValues(this);
+        }
     }
 
     public void ReceiveParent(PotionHandler handler)

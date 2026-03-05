@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738724007249384960}
   - component: {fileID: 5079415367586418214}
-  - component: {fileID: 8832887144218987083}
+  - component: {fileID: -6054719309615649633}
   - component: {fileID: 4014118776444939308}
   - component: {fileID: 3689140118795958939}
   - component: {fileID: 8956830787592176908}
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8832887144218987083
+--- !u!114 &-6054719309615649633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,9 +216,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2655868920688139617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c556d2d5393fbab448c65c82d79c16d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 7140321bbdc3cf244be7bb5c2bc11260, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  m_EditorClassIdentifier: Assembly-CSharp::BossEnemyController
   enemyData: {fileID: 11400000, guid: 34ab71689d2f02e4da1f5784d6104865, type: 2}
   dealtDamageData:
     damage: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33045daf2af76a46b1b4773a82816b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDieController
-  enemyController: {fileID: 8832887144218987083}
+  enemyController: {fileID: -6054719309615649633}
   enemyDieEvent: {fileID: 11400000, guid: e8f8dc70d49b0254387ecfcd4e77944b, type: 2}
 --- !u!114 &3689140118795958939
 MonoBehaviour:
@@ -256,7 +256,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  enemyController: {fileID: 8832887144218987083}
+  enemyController: {fileID: -6054719309615649633}
   attackCooldown: 2
   initialBounceAttackChance: 5
   maxBounces: 6
@@ -729,5 +729,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c3c064db1f196409ddee2a5e63ae23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHpBar
-  enemyController: {fileID: 8832887144218987083}
+  enemyController: {fileID: -6054719309615649633}
   hpBar: {fileID: 2089936281449928134}

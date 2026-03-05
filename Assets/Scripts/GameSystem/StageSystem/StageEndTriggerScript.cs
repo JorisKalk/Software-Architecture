@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Class that triggers the StageSwitchSystem to go to the next stage.
@@ -12,6 +13,7 @@ public class StageEndTriggerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (stageSwitchSystem == null) throw new Exception("No StageSwitchSystem attached to the StageEndTrigger");
             stageSwitchSystem.NextStage();
         }
     }
